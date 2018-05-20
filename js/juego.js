@@ -4,7 +4,7 @@ var instrucciones = [];
 var movimientos = [];
 
 // Representación de la grilla. Cada número representa a una pieza.
-// El 9 es la posición vacía
+// El 9 es la posición vacía.
 var grilla = [
     [1, 2, 3],
     [4, 5, 6],
