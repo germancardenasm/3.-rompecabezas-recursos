@@ -4,7 +4,7 @@
                         "sigue moviendolas hasta que tengas la imagen completa",
                         "La imagen de referencia te podra guiar en como debes ir moviendo las piezas"
                       ];
-    // Arreglo para ir guardando los movimientos que se vayan realizando
+    // Arreglo para ir guardando los movimientos que se vayan realizando.
     var movimientos = [];
 
     // Representación de la grilla. Cada número representa a una pieza.
