@@ -5,7 +5,7 @@
                         "La imagen de referencia te podra guiar en como debes ir moviendo las piezas"
                       ];
     // Arreglo para ir guardando los movimientos que se vayan realizando
-    var movimientos = [codigosDireccion.ABAJO,codigosDireccion.ABAJO,codigosDireccion.ABAJO];
+    var movimientos = [];
 
     // Representación de la grilla. Cada número representa a una pieza.
     // El 9 es la posición vacía.
@@ -43,11 +43,28 @@
     Existen diferentes formas de hacer este chequeo a partir de la grilla. */
     function chequearSiGano() {
         //COMPLETAR
+        var consecutivo=1;
+        var armado=false;
+            for(var i=0; i<grilla.length; i++){
+              for(var j=0; j<grilla[i].length; j++){
+                  if(consecutivo==grilla[i][j]){
+                    consecutivo++;
+                  }
+              }
+            }
+        
+        if(consecutivo == 10){
+             armado=true;
+          }
+          
+      return armado;
+        
     }
 
     // Implementar alguna forma de mostrar un cartel que avise que ganaste el juego
     function mostrarCartelGanador() {
         //COMPLETAR
+        alert("ganaste el juego");
     }
 
     /* Función que intercambia dos posiciones en la grilla.
@@ -62,17 +79,25 @@
     */
     function intercambiarPosicionesGrilla(filaPos1, columnaPos1, filaPos2, columnaPos2) {
         //COMPLETAR
+        var piezaUno=grilla[filaPos1][columnaPos1];
+        grilla[filaPos1][columnaPos1]=grilla[filaPos2][columnaPos2];
+        grilla[filaPos2][columnaPos2]=piezaUno;
     }
 
     // Actualiza la posición de la pieza vacía
     function actualizarPosicionVacia(nuevaFila, nuevaColumna) {
-        //COMPLETAR
+        filaVacia=nuevaFila;
+        columnaVacia=nuevaColumna;
     }
 
 
     // Para chequear si la posicón está dentro de la grilla.
     function posicionValida(fila, columna) {
-        //COMPLETAR
+      if(fila>=0 && fila<3 && columna>=0 && columna<3){
+        return true;
+      } else {
+        return false;
+      }
     }
 
     /* Movimiento de fichas, en este caso la que se mueve es la blanca intercambiando su posición con otro elemento.
@@ -83,24 +108,28 @@
 
       // Mueve pieza hacia la abajo, reemplazandola con la blanca
       if (direccion === codigosDireccion.ABAJO) {
-        nuevaFilaPiezaVacia = filaVacia - 1;
+        nuevaFilaPiezaVacia = filaVacia + 1;
         nuevaColumnaPiezaVacia = columnaVacia;
       }
         
       // Mueve pieza hacia arriba, reemplazandola con la blanca
       else if (direccion === codigosDireccion.ARRIBA) {
-        nuevaFilaPiezaVacia = filaVacia + 1;
+        nuevaFilaPiezaVacia = filaVacia - 1;
         nuevaColumnaPiezaVacia = columnaVacia;
       }
         
       // Mueve pieza hacia la derecha, reemplazandola con la blanca
       else if (direccion === codigosDireccion.DERECHA) {
         //COMPLETAR
+        nuevaFilaPiezaVacia = filaVacia;
+        nuevaColumnaPiezaVacia = columnaVacia + 1;
       }
         
       // Mueve pieza hacia la izquierda, reemplazandola con la blanca
       else if (direccion === codigosDireccion.IZQUIERDA) {
         // COMPLETAR
+        nuevaFilaPiezaVacia = filaVacia;
+        nuevaColumnaPiezaVacia = columnaVacia -1;
       }
 
       /* A continuación se chequea si la nueva posición es válida, si lo es, se intercambia. 
@@ -112,6 +141,7 @@
             actualizarPosicionVacia(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
 
       //COMPLETAR: Agregar la dirección del movimiento al arreglo de movimientos
+        almacenaDirecciones(direccion);
 
         }
     }
@@ -157,6 +187,7 @@
 
     function intercambiarPosicionesDOM(idPieza1, idPieza2) {
       // Intercambio posiciones en el DOM
+    
       var elementoPieza1 = document.getElementById(idPieza1);
       var elementoPieza2 = document.getElementById(idPieza2);
 
@@ -251,7 +282,7 @@
     presiona el usuario */
     function iniciar() {
         mostrarInstrucciones(instrucciones);
-        mezclarPiezas(30);
+        mezclarPiezas(40);
         capturarTeclas();
     }
 
