@@ -4,7 +4,7 @@
                         "sigue moviendolas hasta que tengas la imagen completa",
                         "La imagen de referencia te podra guiar en como debes ir moviendo las piezas"
                       ];
-    // Arreglo para ir guardando los movimientos que se vayan realizando
+    // Arreglo para ir guardando los movimientos que se vayan realizando.
     var movimientos = [];
 
     // Representación de la grilla. Cada número representa a una pieza.
@@ -20,6 +20,7 @@
     var filaVacia = 2;
     var columnaVacia = 2;
 
+
     /* Esta función deberá recorrer el arreglo de instrucciones pasado por parámetro. 
     Cada elemento de este arreglo deberá ser mostrado en la lista con id 'lista-instrucciones'. 
     Para eso deberás usar la función ya implementada mostrarInstruccionEnLista().
@@ -29,6 +30,7 @@
             mostrarInstruccionEnLista(instrucciones[i], "lista-instrucciones");
         }
     }
+
 
     /* COMPLETAR: Crear función que agregue la última dirección al arreglo de movimientos
     y utilice actualizarUltimoMovimiento para mostrarlo en pantalla */
@@ -224,7 +226,6 @@
     con idLista. Se crea un elemento li dinámicamente con el texto 
     pasado con el parámetro "instrucción". */
     function mostrarInstruccionEnLista(instruccion, idLista) {
-      console.log(idLista);
       var ul = document.getElementById(idLista);
       var li = document.createElement("li");
       li.textContent = instruccion;
@@ -281,8 +282,9 @@
     y ejecutando la función para que se capturen las teclas que 
     presiona el usuario */
     function iniciar() {
+        
         mostrarInstrucciones(instrucciones);
-        mezclarPiezas(40);
+        mezclarPiezas(10);
         capturarTeclas();
     }
 
